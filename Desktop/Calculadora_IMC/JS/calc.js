@@ -1,13 +1,21 @@
-let nome = document.getElementsById(nome);
+let calculo = document.getElementById("calculo")
 
-let altura = document.getElementsById(altura);
+function imc(){
 
-let peso = document.getElementsById(peso);
+    let nome = document.getElementById('nome').value;
+    let altura = document.getElementById('altura').value;
+    let peso = document.getElementById('peso').value;
+    let resultado = document.getElementById('resultado');
 
-let calculo = document.getElementsById(calculo)
+    if(nome !== '' && altura !== '' && peso !== ''){
+        alert('Valor Preenchido');
+    }else{
+        resultado.textContent = ("Preencha todos os campos");
+    }
 
-let resultado = document.getElementsById(resultado);
+}
 
-alert(nome);
 
-console.log("Teste");
+calculo.addEventListener('click', imc);
+
+

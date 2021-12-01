@@ -1,41 +1,49 @@
-let calculo = document.getElementById("calculo")
+const calculo = document.getElementById("calculo")
 
 function imc(){
 
-    let nome = document.getElementById('nome').value;
-    let altura = document.getElementById('altura').value;
-    let peso = document.getElementById('peso').value;
-    let resultado = document.getElementById('resultado');
+    const nome = document.getElementById('nome').value;
+    const altura = document.getElementById('altura').value;
+    const peso = document.getElementById('peso').value;
+    const resultado = document.getElementById('resultado');
 
     if(nome !== '' && altura !== '' && peso !== ''){
         
-        let valorIMC = Math.round(peso / (altura * altura));
+        const valorIMC = (peso / (altura * altura)).toFixed(1);
 
-        resultado.textContent = (`Seu IMC é ${valorIMC}`);
+        let classificacao = "";
 
-        /*
-        if (valorIMC < 17){
+        if (valorIMC < 18.5){
 
-            resultado.textContent = valorIMC("Seu IMC está abaixo dos recomendados");         
-   
-        }
-        if (valorIMC > 17, valorIMC < 34){
-
-            resultado.textContent = valorIMC("Seu IMC está entre o recomendado");
+           classificacao = "abaixo da média";
 
         }
-        if(valorIMC > 34){
+        else if(valorIMC < 25){
 
-            resultado.textContent = valorIMC("Seu IMC está muito alto!");
+            classificacao = "ideal, parabéns!";
 
         }
-        */
+        else if(valorIMC < 30){
 
-    }else{
-       // resultado.textContent = "Preencha os campos.";
+            classificacao = "levemente acima do peso";
+
+        }
+        else if(valorIMC < 35){
+
+            classificacao = "com obesidade grau I";
+
+        }
+        else if(valorIMC < 40){
+
+            classificacao = 'com obesidade grau II';
+
+        }else{
+            classificacao = "com obesidade grau III. cuidado";
+        }
+
+        resultado.textContent = (`${nome} seu IMC é ${valorIMC} e está ${classificacao}`);
+        
     }
 
 }
-
-
 calculo.addEventListener( 'click', imc);
